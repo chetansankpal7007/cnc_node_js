@@ -1,23 +1,19 @@
-const express  = require('express');
-const cors = require('cors');
-let http = require('http');
-
+const express = require('express')
 const app = express();
-app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
 
-const router = require('./router/apiRouter.js');
+const apiRouter = require('./router/userRouter'); 
 
-app.use('/user', router);
-
-
-app.get('/', (req,  res)=>{
-    let data = "welcome to chetan sankpal class";
-    console.log("API called");
-    res.json(data);
+app.get('/', (req, res)=> {
+    res.send("Welcome in node js");
 });
 
 
+app.use('/', apiRouter);
 
-http.createServer(app).listen(8090);
+
+
+app.listen(8090)
+
+
+
