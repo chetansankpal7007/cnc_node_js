@@ -4,13 +4,16 @@ const userInfo = (req, res) => {
 }
 
 const creatUser =  (req, res) => {
-    console.log(req.body);
-    data.push(req.body);
-    res.send("User created");
+    data.push(req);
+    res.status(200).send("User created");
 }
 
 const getUser = (req, res) => {
-    res.send(data);
+    try {
+        res.send(data);
+    } catch (error) {
+        res.status(500).send("plz try later, have same isuue");
+    }
 }
 
 module.exports = {
