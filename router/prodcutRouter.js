@@ -1,8 +1,13 @@
 const product = require('../controllers/productController');
-const roter = require('express').Router();
+const { route } = require('./userRouter');
+const router = require('express').Router();
 
-roter.get('/product-list', product.getProduct);
-roter.post('/product-create', product.createProduct);
+router.get('/product-list', product.getProduct);
+router.post('/product-create', product.createProduct);
+router.get('/product-info/:id', product.productInfo);
+router.get('/product-info-by-name/:name', product.productInfoByName);
+router.post('/update-product', product.updateProduct);
+router.delete('/delete-product/:id', product.DeleteProduct);
 
 
-module.exports = roter;
+module.exports = router;
