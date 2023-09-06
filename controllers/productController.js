@@ -15,9 +15,11 @@ const createProduct = async (req, res) => {
         let data = req.body;
         const newProduct = await product.create(data);
         if(newProduct) {
-            res.status(200).send("Product added");
-        }else {
-            res.status(400).send("Product not added");
+            let resJson = {msg: "Product added"}
+            res.status(200).send(resJson);
+        }else {            
+            let resJson = {msg: "Product not added"}
+            res.status(400).send(resJson);
         }
     } catch (error) {
         res.status(500).send(error.message);
