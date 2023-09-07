@@ -75,9 +75,11 @@ const DeleteProduct = async (req, res) => {
     try {
         const isdelete = await product.findByIdAndDelete(reqData.id);
         if(isdelete) {
-            res.status(200).send("Product Deleted");
-        } else {
-            res.status(200).send("Product not Deleted");
+            let resJson = {msg: "Product Deleted"}
+            res.status(200).send(resJson);
+        } else {            
+            let resJson = {msg: "Product not Deleted"}
+            res.status(200).send(resJson);
         }
     } catch (error) {
         res.status(500).send(error.message);
