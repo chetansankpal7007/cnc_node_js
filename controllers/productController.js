@@ -61,9 +61,11 @@ const updateProduct = async (req, res) => {
         console.log(data);
         const isupdate = await product.findByIdAndUpdate(data._id, data);
         if(isupdate) {
-            res.status(200).send("Product updated");
-        }else {
-            res.status(400).send("Product not updated");
+            let resJson = {msg: "Product updated"}
+            res.status(200).send(resJson);
+        }else {            
+            let resJson = {msg: "Product not updated"}
+            res.status(400).send(resJson);
         }
     } catch (error) {
         res.status(500).send(error.message);
